@@ -31,6 +31,20 @@
         android:layout_gravity="center"
         android:visibility="gone" />
 
+    <TextView
+        android:id="@+id/seekIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|start"
+        android:layout_margin="@dimen/standard_padding"
+        android:background="@drawable/player_seek_indicator_background"
+        android:importantForAccessibility="no"
+        android:paddingHorizontal="@dimen/standard_padding"
+        android:paddingVertical="@dimen/standard_half_padding"
+        android:textColor="@color/player_default_text_color"
+        android:textSize="@dimen/txt_size_16sp"
+        android:visibility="gone" />
+
     <com.nextcloud.client.player.ui.control.PlayerControlView
         android:id="@+id/playerControlView"
         android:layout_width="match_parent"

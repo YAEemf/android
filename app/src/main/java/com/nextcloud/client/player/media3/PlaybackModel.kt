@@ -31,6 +31,7 @@ import com.nextcloud.client.player.util.PlayerUtil.setRepeatMode
 import com.nextcloud.client.player.util.PlayerUtil.toMediaItem
 import com.nextcloud.client.player.util.PlayerUtil.toPlaybackState
 import com.nextcloud.client.player.util.PlayerUtil.updateMediaItems
+import com.nextcloud.client.player.util.seekPosition
 import com.owncloud.android.datamodel.OCFile
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -281,6 +282,12 @@ class PlaybackModel @Inject constructor(
 
     fun seekToPosition(positionInMilliseconds: Long) {
         controller?.seekTo(positionInMilliseconds)
+    }
+
+    fun seekBy(offsetInMilliseconds: Long) {
+        controller?.run {
+            seekTo(seekPosition(currentPosition, offsetInMilliseconds, duration))
+        }
     }
 
     fun setRepeatMode(repeatMode: RepeatMode) {

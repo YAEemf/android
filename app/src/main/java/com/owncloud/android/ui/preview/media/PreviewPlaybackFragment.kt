@@ -35,6 +35,7 @@ import com.nextcloud.client.player.model.state.PlaybackState
 import com.nextcloud.client.player.model.state.PlayerState
 import com.nextcloud.client.player.model.state.VideoSize
 import com.nextcloud.client.player.ui.MediaNavigator
+import com.nextcloud.client.player.ui.VideoDoubleTapSeek
 import com.nextcloud.client.player.util.PlayerUtil.applyVideoSize
 import com.nextcloud.client.player.util.PlayerUtil.isPictureInPictureAllowed
 import com.nextcloud.client.player.util.PlayerUtil.ownsPlayback
@@ -133,6 +134,7 @@ class PreviewPlaybackFragment :
         binding.playerControlView.addPaddingForNavBar()
         binding.playerControlView.isVisible = previewActivity?.isActionBarVisible != false
         binding.surfaceView.setOnClickListener { toggleFullScreen() }
+        VideoDoubleTapSeek(binding.surfaceView, binding.seekIndicator, playbackModel).attach()
         updatePlayerControlsVisibility()
         binding.root.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
             if (ownsPlayback(binding.surfaceView)) render(playbackModel.state)
